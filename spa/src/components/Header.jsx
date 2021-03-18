@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Container, Nav, NavItem, NavLink } from 'reactstrap';
-import { useContext } from 'react';
+import '../styles/header.css';
+// import { useContext } from 'react';
 // import UserContext from '../context/user';
 
 export default function Header() {
