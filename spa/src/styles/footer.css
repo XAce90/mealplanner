@@ -1,0 +1,9 @@
+footer {
+  background-color: blue;
+  color: white;
+}
+
+footer > .container {
+  display: flex;
+  justify-content: space-between;
+}
