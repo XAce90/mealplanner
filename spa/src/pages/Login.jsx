@@ -3,13 +3,13 @@ import '../styles/login.css';
 
 export default function Login() {
 
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     console.log('submitting...');
   }
 
   return (
-      <Form onSubmit={handleSubmit} className="login">
+      <Form onSubmit={handleLogin} className="login">
         <h1>Log in</h1>
         <p>{/* todo text */}</p>
         <FormGroup>
