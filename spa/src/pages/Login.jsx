@@ -1,11 +1,28 @@
+import { useContext, useState } from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { useHistory } from 'react-router-dom';
+import { login } from '../utils/auth';
 import '../styles/login.css';
+import UserContext from '../context/user';
 
 export default function Login() {
+  /* todo: combine this page with Registration for DRYness */
+  const { setUser } = useContext(UserContext);
+  const history = useHistory();
+  const [ email, setEmail ] = useState('');
+  const [ password, setPassword ] = useState('');
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    console.log('submitting...');
+    const user = await login({email, password});
+    if(user) {
+      console.log('login success!');
+      setUser(user);
+      history.push('/');
+    } else {
+      console.error('failed to log in');
+      // todo: better error UX
+    }
   }
 
   return (
@@ -14,12 +31,22 @@ export default function Login() {
         <p>{/* todo text */}</p>
         <FormGroup>
           <Label for="loginEmail">Email Address</Label>
-          <Input type="email" name="email" id="loginEmail" />
+          <Input 
+            id="loginEmail"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </FormGroup>
 
         <FormGroup>
           <Label for="loginPass">Password</Label>
-          <Input type="password" name="password" id="loginPass" />
+          <Input 
+            id="loginPass"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </FormGroup>
         
         <Button>Log in</Button>
