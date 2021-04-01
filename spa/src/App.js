@@ -3,8 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Header from'./components/Header';
 import Footer from './components/Footer';
 import Recipes from './pages/Recipes';
-import Login from './pages/Login';
-import Register from './pages/Register';
+import LoginRegistration from './pages/LoginRegistration';
 import UserContext from './context/user';
 
 function App() {
@@ -21,10 +20,10 @@ function App() {
             <Recipes />
           </Route>
           <Route path="/login">
-            <Login />
+            <LoginRegistration action="login" />
           </Route>
           <Route path="/register">
-            <Register />
+            <LoginRegistration action="register" />
           </Route>
           <Route path="/">
             <h1>Hello World</h1>
